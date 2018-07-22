@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Inventory App</string>
+    <string name="product_header">Product info</string>
+    <string name="name">NAME</string>
+    <string name="product_price">PRICE</string>
+    <string name="product_stock">QUANTITY</string>
+    <string name="supplier_header">Supplier info</string>
+    <string name="supplier_phone">PHONE NO</string>
+    <string name="purchase_item">buy me</string>
+    <string name="initial_value">0</string>
+    <string name="add_product">Add a product</string>
+    <string name="dksn">DKSN Finds</string>
+    <string name="save">Save</string>
+    <string name="sample_product">Test run with our top pick!</string>
+    <string name="inventory_header">DKSN Inventory and Supplers</string>
+    <string name="currency"><u>£</u></string>
+    <string name="stock_count"> So far, we\'ve found this much items for you to play around with!  </string>
+
+</resources>
