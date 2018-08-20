@@ -5,4 +5,5 @@
     <color name="colorAccent">#b85734</color>
     <color name="titleColour">#d1927b</color>
     <color name="mainPageColour">#4A3838</color>
+    <color name="out_of_stock">#FF0000</color>
 </resources>

@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/dksn">
+            android:label="@string/dksn"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,17 +21,16 @@
         </activity>
         <activity
             android:name=".EditorActivity"
-            android:label="@string/add_product"
+            android:label=""
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-        <!--
-        >
-
-
-        </activity> -->
+        <provider
+            android:authorities="com.example.android.inventoryapp"
+            android:name="Contract.DKSNProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>

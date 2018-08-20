@@ -24,6 +24,7 @@
         <item name="android:textColor">@color/mainPageColour</item>
         <item name="android:maxLines">1</item>
         <item name="android:inputType">text</item>
+        <item name="android:textAllCaps">true</item>
 
     </style>
 

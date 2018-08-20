@@ -8,12 +8,41 @@
     <string name="supplier_phone">PHONE NO</string>
     <string name="purchase_item">buy me</string>
     <string name="initial_value">0</string>
-    <string name="add_product">Add a product</string>
     <string name="dksn">DKSN Finds</string>
     <string name="save">Save</string>
     <string name="sample_product">Test run with our top pick!</string>
-    <string name="inventory_header">DKSN Inventory and Supplers</string>
+    <string name="inventory_header">DKSN Inventory and Suppliers</string>
     <string name="currency"><u>£</u></string>
     <string name="stock_count"> So far, we\'ve found this much items for you to play around with!  </string>
+    <string name="action_delete_all_entries">Delete All Products</string>
+    <string name="delete_all_products">Are you sure you want to delete all products?</string>
+    <string name="total_del_failed">Error with deleting products</string>
+    <string name="total_del_successful">All products deleted</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="buy_product">buy me</string>
+    <string name="confirmation_button">ok</string>
+    <string name="editor_activity_title_new_product">Add a Product</string>
+    <string name="editor_activity_title_edit_product">Edit Product</string>
+    <string name="editor_insert_prod_failed">Error saving product</string>
+    <string name="editor_insert_prod_successful">Product saved</string>
+    <string name="editor_update_prod_failed">Error updating product</string>
+    <string name="editor_update_prod_successful">Product update successful</string>
+    <string name="delete_dialog_msg">Delete this product?</string>
+    <string name="editor_delete_prod_failed">Error deleting product</string>
+    <string name="editor_delete_prod_successful">Product deleted</string>
+    <string name="action_delete">Delete</string>
+    <string name="unsaved_changes_dialog_msg">Do you wish to discard changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
+    <string name="no_contact">No contact details</string>
+    <string name="missing_fields_alert">Please complete missing field(s)</string>
+    <string name="out_of_stock">Out of stock - </string>
+    <string name="low_in_stock">Low in stock - </string>
+    <string name="in_stock">In stock - </string>
+    <string name="max_purchase">Purchases are restricted to a maximum of 5</string>
+    <string name="out_of_stock_memo">This product is out of stock</string>
+    <string name="add_item">Add an item</string>
+
 
 </resources>
