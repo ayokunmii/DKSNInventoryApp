@@ -88,7 +88,6 @@ public class DKSNCursorAdapter extends CursorAdapter {
         // this is a format method that changes numbers to currencies
         NumberFormat currencyFormatter =
                 NumberFormat.getCurrencyInstance(locale);
-
         // formatting using the currency NumberFormat declared above
         final double intPrice = Double.valueOf(price);
         String localPrice = currencyFormatter.format(intPrice);
