@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,7 @@ public class DKSNCursorAdapter extends CursorAdapter {
     Button increment;
     Button decrement;
     TextView inputQuan;
-    LinearLayout suppContact;
+    ImageButton suppContact;
 
     public DKSNCursorAdapter(Context context, Cursor c) {
         super(context, c);
@@ -53,7 +54,7 @@ public class DKSNCursorAdapter extends CursorAdapter {
         TextView productSupplier = (TextView) view.findViewById(R.id.supplier_text);
         final TextView supplierNo = (TextView) view.findViewById(R.id.supplier_number);
 
-        suppContact = (LinearLayout) view.findViewById(R.id.contact_supplier);
+        suppContact = (ImageButton) view.findViewById(R.id.contact_supplier);
         TextView stockLevel = (TextView) view.findViewById(R.id.stock_level);
         Button saleButton = (Button) view.findViewById(R.id.sale_button);
         increment = (Button) view.findViewById(R.id.increment_b);
@@ -106,8 +107,10 @@ public class DKSNCursorAdapter extends CursorAdapter {
             stockLevel.setTextColor((context.getResources().getColor(R.color.out_of_stock)));
         } else if (quantityInt <= 15) {
             stockLevel.setText(R.string.low_in_stock);
+            stockLevel.setTextColor((context.getResources().getColor(R.color.black)));
         } else if (quantityInt > 15) {
             stockLevel.setText(R.string.in_stock);
+            stockLevel.setTextColor((context.getResources().getColor(R.color.black)));
         }
 
 
@@ -116,16 +119,15 @@ public class DKSNCursorAdapter extends CursorAdapter {
         suppContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (finalSupplierNumber == String.valueOf(R.string.no_contact)) {
 
-                } else {
                     String phoneNumber = supplierNo.getText().toString().trim();
                     Intent intentPhone = new Intent(Intent.ACTION_DIAL);
                     intentPhone.setData(Uri.parse("tel:" + phoneNumber));
                     if (intentPhone.resolveActivity(context.getPackageManager()) != null) {
                         context.startActivity(intentPhone);
-                    }
-                }
+                        }
+
+
             }
         });
 
@@ -141,10 +143,18 @@ public class DKSNCursorAdapter extends CursorAdapter {
         saleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityBought = 1;
-                Toast.makeText(context, "Add " + quantityBought + " item(s) to basket? \nClick OK to confirm purchase", Toast.LENGTH_LONG).show();
-                saleQuantity.setVisibility(View.VISIBLE);
-                confirmation.setVisibility(View.VISIBLE);
+                quantityInt = Integer.valueOf(quantity);
+                Log.i("EditActivity", "Quantity is " + quantity + " Input quantity is " + inputQuan);
+                if (quantityInt <= 0) {
+                    Toast.makeText(context, context.getString(R.string.out_of_stock_memo), Toast.LENGTH_SHORT).show();
+                    quantityBought = 0;
+                } else {
+                    quantityBought = 1;
+                    Toast.makeText(context, "Add " + quantityBought + " item(s) to basket? \nClick OK to confirm purchase", Toast.LENGTH_LONG).show();
+                    saleQuantity.setVisibility(View.VISIBLE);
+                    confirmation.setVisibility(View.VISIBLE);
+                }
+
 
             }
 
@@ -159,6 +169,7 @@ public class DKSNCursorAdapter extends CursorAdapter {
                 contentValues.put(DKSNContract.DKSNEntry.COLUMN_DKSN_QUANTITY, newQuantity);
                 context.getContentResolver().update(cookieQuantityUri, contentValues, null, null);
                 Toast.makeText(context, "You have " + quantityBought + " item(s) in your basket.", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -167,23 +178,27 @@ public class DKSNCursorAdapter extends CursorAdapter {
             @Override
             public void onClick(View view) {
                 quantityInt = Integer.valueOf(quantity);
-                quantityBought++;
-
-
-                if (quantityBought >= quantityInt) {
-                    Toast.makeText(context, "Only " + quantityInt + " available for purchase", Toast.LENGTH_SHORT).show();
-                    quantityBought = quantityInt;
-                } else if (quantityBought > 5) {
-                    Toast.makeText(context, context.getString(R.string.max_purchase), Toast.LENGTH_SHORT).show();
-                    quantityBought = 5;
-                } else if (quantityInt == 0) {
+                Log.i("EditActivity", "Quantity is " + quantity + " Input quantity is " + inputQuan);
+                if (quantityInt <= 0){
                     Toast.makeText(context, context.getString(R.string.out_of_stock_memo), Toast.LENGTH_SHORT).show();
                     quantityBought = 0;
-                } else {
-                    Toast.makeText(context, "Add " + quantityBought + " item(s) to basket? Click OK to confirm purchase", Toast.LENGTH_LONG).show();
 
+                } else {
+                    quantityBought++;
+
+                    if (quantityBought > quantityInt) {
+                        Toast.makeText(context, "Only " + quantityInt + " available for purchase", Toast.LENGTH_SHORT).show();
+                        quantityBought = quantityInt;
+                    } else if (quantityBought > 5) {
+                        Toast.makeText(context, context.getString(R.string.max_purchase), Toast.LENGTH_SHORT).show();
+                        quantityBought = 5;
+                    } else {
+                        Toast.makeText(context, "Add " + quantityBought + " item(s) to basket? Click OK to confirm purchase", Toast.LENGTH_LONG).show();
+
+                    }
+                    Log.i("EditActivity", "Quantity bought  is " + quantityBought + " Input quantity is " + inputQuan);
                 }
-                Log.i("EditActivity", "Quantity bought  is " + quantityBought + " Input quantity is " + inputQuan);
+
 
             }
         });

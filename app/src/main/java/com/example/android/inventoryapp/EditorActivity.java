@@ -329,7 +329,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             Log.i("EditActivity", "Quantity is " + s);
             quantity = Integer.parseInt(s);
         }
-        quantity++;
+        if (quantity < 0) {
+            quantity = 0;
+        } else {
+            quantity++;
+        }
         displayStock(quantity);
     }
 

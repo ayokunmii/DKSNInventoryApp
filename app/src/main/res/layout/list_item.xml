@@ -108,14 +108,17 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/contact_supplier"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <ImageButton
+                        android:id="@+id/contact_supplier"
                         android:layout_width="@dimen/image_size"
                         android:layout_height="@dimen/image_size"
+                        android:scaleType="centerCrop"
+                        android:background="@null"
                         android:src="@mipmap/supplier_no" />
 
                     <TextView

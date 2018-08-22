@@ -6,4 +6,5 @@
     <color name="titleColour">#d1927b</color>
     <color name="mainPageColour">#4A3838</color>
     <color name="out_of_stock">#FF0000</color>
+    <color name="black">#000000</color>
 </resources>
